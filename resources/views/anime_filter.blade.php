@@ -8,14 +8,13 @@
 
 // pre($anime_cat);
 $cookie_name = 'search';
-if (isset($_GET["search"])) {
+if (isset($_GET['search'])) {
     # code...
-       Session::put($cookie_name,$_GET["search"] );
-       $session= Session::get($cookie_name);
-}
-else{
-     Session::put($cookie_name,Session::get($cookie_name));
-    $session= Session::get($cookie_name);
+    Session::put($cookie_name, $_GET['search']);
+    $session = Session::get($cookie_name);
+} else {
+    Session::put($cookie_name, Session::get($cookie_name));
+    $session = Session::get($cookie_name);
 }
 
 $actual_link = (isset($_SERVER['HTTPS']) && $_SERVER['HTTPS'] === 'on' ? 'https' : 'http') . "://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]";
@@ -113,7 +112,7 @@ if (request()->id != 'ASC' && request()->id != 'DESC') {
                                                     value="{{ Session::get($cookie_name) }}">
                                             @endif
                                         @else
-YOU Search: {{Session::get("search")}}
+                                            YOU Search: {{ Session::get('search') }}
 
                                         @endif
                                     </h4>
@@ -180,7 +179,9 @@ else{
                                                 <li>{{ $anime->episodes_status }}</li>
                                                 <li>Movie</li>
                                             </ul>
-                                            <h5 style="color: whitesmoke"><a href="{{ url('/') }}/anime-detail/{{ $anime->anime_id }}?{{ $anime->anime_title }}">{{ $anime->anime_title }}</a></h5>
+                                            <h5 style="color: whitesmoke"><a
+                                                    href="{{ url('/') }}/anime-detail/{{ $anime->anime_id }}?{{ $anime->anime_title }}">{{ $anime->anime_title }}</a>
+                                            </h5>
 
                                     </a>
                                 </div>
@@ -224,106 +225,7 @@ else{
 ?>
             <div class="col-lg-4 col-md-6 col-sm-8">
                 <div class="product__sidebar">
-                    <div class="product__sidebar__view">
-                        <div class="section-title">
-                            <h5>Top Views</h5>
-                        </div>
-                        <ul class="filter__controls">
-                            <li class="active" data-filter="*">Day</li>
-                            <li data-filter=".week">Week</li>
-                            <li data-filter=".month">Month</li>
-                            <li data-filter=".years">Years</li>
-                        </ul>
-                        <br>
-                        <div class="filter__gallery">
-                            <div class="product__sidebar__view__item set-bg mix day years"
-                                data-setbg="img/sidebar/tv-1.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Boruto: Naruto next generations</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix month week"
-                                data-setbg="img/sidebar/tv-2.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix week years"
-                                data-setbg="img/sidebar/tv-3.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Sword art online alicization war of underworld</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix years month"
-                                data-setbg="img/sidebar/tv-4.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Fate/stay night: Heaven's Feel I. presage flower</a></h5>
-                            </div>
-                            <div class="product__sidebar__view__item set-bg mix day" data-setbg="img/sidebar/tv-5.jpg">
-                                <div class="ep">18 / ?</div>
-                                <div class="view"><i class="fa fa-eye"></i> 9141</div>
-                                <h5><a href="#">Fate stay night unlimited blade works</a></h5>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="product__sidebar__comment">
-                        <div class="section-title">
-                            <h5>New Comment</h5>
-                        </div>
-                        <div class="product__sidebar__comment__item">
-                            <div class="product__sidebar__comment__item__pic">
-                                <img src="img/sidebar/comment-1.jpg" alt="">
-                            </div>
-                            <div class="product__sidebar__comment__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">The Seven Deadly Sins: Wrath of the Gods</a></h5>
-                                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                            </div>
-                        </div>
-                        <div class="product__sidebar__comment__item">
-                            <div class="product__sidebar__comment__item__pic">
-                                <img src="img/sidebar/comment-2.jpg" alt="">
-                            </div>
-                            <div class="product__sidebar__comment__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Shirogane Tamashii hen Kouhan sen</a></h5>
-                                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                            </div>
-                        </div>
-                        <div class="product__sidebar__comment__item">
-                            <div class="product__sidebar__comment__item__pic">
-                                <img src="img/sidebar/comment-3.jpg" alt="">
-                            </div>
-                            <div class="product__sidebar__comment__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Kizumonogatari III: Reiket su-hen</a></h5>
-                                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                            </div>
-                        </div>
-                        <div class="product__sidebar__comment__item">
-                            <div class="product__sidebar__comment__item__pic">
-                                <img src="img/sidebar/comment-4.jpg" alt="">
-                            </div>
-                            <div class="product__sidebar__comment__item__text">
-                                <ul>
-                                    <li>Active</li>
-                                    <li>Movie</li>
-                                </ul>
-                                <h5><a href="#">Monogatari Series: Second Season</a></h5>
-                                <span><i class="fa fa-eye"></i> 19.141 Viewes</span>
-                            </div>
-                        </div>
-                    </div>
+
                 </div>
             </div>
         </div>
@@ -334,9 +236,6 @@ else{
 <x-footer />
 
 <script>
-
-
-
     function changeurl2() {
 
         var order_by2 = $("#order").val();
@@ -347,9 +246,10 @@ else{
         // var cat_name2=$("#category_name").val();
         // alert(order_by2)
 
-        if ($.trim("{{$session}}").length !== 0 ) {
+        if ($.trim("{{ $session }}").length !== 0) {
             // ChangeUrl("Anime| template", "{{ url('category/') }}/" + cat_name2 + "/" + order_by2)
-            ChangeUrl("Anime| template", "{{ url('anime-filter/') }}?" + urlParams +"&&search="+'{{Session::get("search")}}')
+            ChangeUrl("Anime| template", "{{ url('anime-filter/') }}?" + urlParams + "&&search=" +
+                '{{ Session::get('search') }}')
             // check_url(cat_name2,order_by2)
 
             location.reload();

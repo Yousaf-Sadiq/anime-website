@@ -4,12 +4,14 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="description" content="Anime Template">
-    <meta name="keywords" content="Anime, unica, creative, html">
+    <meta name="description" content="{{ $desc }}">
+    {{-- <meta name="keywords" content="Anime, unica, creative, html"> --}}
+    <meta name="keywords" content="{{ $meta_keys }}">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}" />
-    <title>Anime | Template</title>
+    <title>{{ $title }}</title>
+
 
     <!-- Google Font -->
     <link rel="preload" as="style" onload="this.onload=null;this.rel='stylesheet'"
@@ -90,6 +92,7 @@ if ($current_url[0] != '/anime-filter') {
         width: 5px;
     }
 
+
     body {
         overflow-x: hidden
     }
@@ -110,6 +113,9 @@ if ($current_url[0] != '/anime-filter') {
     ::-webkit-scrollbar-thumb:hover {
         background: #b30000;
     }
+   .header__menu > ul > li a {
+  text-decoration: none;
+}
 </style>
 
 <body>
@@ -137,7 +143,7 @@ if ($current_url[0] != '/anime-filter') {
                 </div>
                 <div class="col-lg-10">
                     <div class="header__nav">
-
+                        {{-- {{$keys}} --}}
 
                         <nav class="header__menu mobile-menu" style="font-size: 1.1rem">
                             <style>
@@ -194,10 +200,15 @@ if ($current_url[0] != '/anime-filter') {
                                                     Whislist </a></li>
 
 
-                                                    <li><a href="{{ url('/user-setting') }}">
+                                            <li><a href="{{ url('/user-setting') }}">
 
-<i class="fa fa-address-book" aria-hidden="true"></i>
+                                                    <i class="fa fa-address-book" aria-hidden="true"></i>
                                                     Profile </a></li>
+
+
+                                                    <li><a href="{{ url('/User-comment') }}">
+                                                    <i class="fa fa-comment" aria-hidden="true"></i>
+                                                    Comment </a></li>
 
 
                                             <li><a href="{{ url('/logout') }}"><i class="fa fa-user-circle"
@@ -310,4 +321,4 @@ if ($current_url[0] != '/anime-filter') {
 
         </div>
     </div>
-{{-- {{pre($category)}} --}}
+    {{-- {{pre($category)}} --}}

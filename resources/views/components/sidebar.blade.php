@@ -243,6 +243,21 @@
             </ul>
           </div>
         </li>
+
+        <li class="nav-item">
+            <a class="nav-link" data-bs-toggle="collapse" href="#metaTag" aria-expanded="false" aria-controls="form-elements">
+              <i class="menu-icon mdi mdi-card-text-outline"></i>
+              <span class="menu-title">SEO Setting</span>
+              <i class="menu-arrow"></i>
+            </a>
+            <div class="collapse" id="metaTag">
+              <ul class="nav flex-column sub-menu">
+                <li class="nav-item"><a class="nav-link" href="{{url("meta-tag-setting")}}">Meta Tags setting</a></li>
+                {{-- <li class="nav-item"><a class="nav-link" href="add_user.php">Add New User</a></li> --}}
+              </ul>
+            </div>
+          </li>
+
         <!-- <li class="nav-item nav-category">SubCategories</li> -->
         <li class="nav-item">
           <a class="nav-link" data-bs-toggle="collapse" href="#SubCats" aria-expanded="false" aria-controls="form-elements">
