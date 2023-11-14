@@ -165,26 +165,26 @@
 
     @keyframes bg-spin {
         to {
-            --border-angle: 1turn;
+            border-angle: 1turn;
         }
     }
 
         {
             {
-            -- .box:hover {
+             .box:hover {
                 -webkit-animation-play-state: paused;
                 animation-play-state: paused;
             }
 
-            --
+
         }
     }
 
-    @property --border-angle {
+    /* @property --border-angle {
         syntax: "<angle>";
         inherits: true;
         initial-value: 0turn;
-    }
+    } */
 </style>
 <!-- Css Styles -->
 <link href="{{ url('css/pagination_style.css') }}" rel="stylesheet">
@@ -196,7 +196,7 @@ $anime_flids = json_decode(json_encode($anime_flid), true);
 //         print_r($anime_flid[0][0]["flid"]);
 // echo "</pre>";
 
-$Api_key = '18269ngt2czq81cjo3uir';
+$Api_key = '5278isk33v7l8ux3kts2';
 // pre($anime_flid)
 ?>
 <div id="overlay-back"></div>
@@ -228,7 +228,7 @@ $Api_key = '18269ngt2czq81cjo3uir';
     $curl = curl_init();
     // key by default 948324jkl3h45h
     curl_setopt_array($curl, [
-        CURLOPT_URL => 'https://api.streamsb.com/api/folder/list?key=' . $Api_key . '&fld_id=' . $anime_flids[0][0]['flid'],
+        CURLOPT_URL => 'https://api.streamwish.com/api/folder/list?key=' . $Api_key . '&fld_id=' . $anime_flids[0][0]['flid']."&files=1",
         CURLOPT_RETURNTRANSFER => true,
         CURLOPT_ENCODING => '',
         CURLOPT_MAXREDIRS => 10,
@@ -420,7 +420,7 @@ pre(Session::get($anime_flids[0][0]['anime_title']));
                         // echo $full_data["result"]["files"][$b]["file_code"]."<br>";
                         $replace=substr($full_data["result"]["files"][$b]["link"], 21);
 
-                        $new_video_url="https://sblanh.com/e/".$replace;
+                        $new_video_url="https://sfastwish.com/e/".$replace;
 
                         array_unshift($save_url_episode["link"],$new_video_url);
                         array_unshift($file_uploaded["uploaded"],$full_data["result"]["files"][$b]["uploaded"]);
