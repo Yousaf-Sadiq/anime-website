@@ -18,7 +18,9 @@ class meta_tag extends Controller
     {
         $sql["all_datas"]=meta_Setting::select("anime_setting.id as anime_id","anime_setting.anime_category as anime_cat","anime_setting.flid","anime_setting.title as anime_title","anime_setting.anime_image","anime_setting.season","anime_setting.total_season","anime_setting.anime_description","anime_setting.episodes_status","anime_setting.anime_status","meta_settings.*")
        -> join("anime_setting","anime_setting.flid","=","meta_settings.anime_id")
+       ->orderBy("meta_settings.id","DESC")
        -> paginate(7);
+
         $sql["anime_data"]=AnimeSettings::all();
 
         return view("Admin.meta_tag_setting",$sql);
@@ -81,6 +83,17 @@ class meta_tag extends Controller
 
         Storage::disk('local')->put("meta_tag/".$file_name, $request->meta_description);
 
+
+        // $meta_key =(array)json_decode($request->meta_keyword,true);
+
+        // foreach($meta_key as $key=>$value){
+        //     $meta_keys=$value ;
+        // }
+
+// for ($i=0; $i < count($meta_key); $i++) {
+//         echo $meta_keys=$meta_key[$i]["value"];
+// }
+        // pre( $meta_keys);
 
         $insert = new meta_Setting;
 

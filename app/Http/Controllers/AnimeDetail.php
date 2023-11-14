@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\add_anime_category;
 use App\Models\AnimeSettings;
+use App\Models\meta_Setting;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
 class AnimeDetail extends Controller
@@ -21,11 +22,12 @@ class AnimeDetail extends Controller
 $description=json_decode(json_encode($all_data["details"]),true);
             // $edit_data=json_decode(json_encode($edit_product),true);
             $contents["data_description"] = Storage::get($description[0]["anime_description"]);
+            $meta_tag["meta_tag"] =meta_Setting::where("anime_id",$description[0]["flid"])->get();
 
             // $url =url("Edit-anime-category")."/".$id;
 
 
-            $show_dat["all_detail"]=[$all_data,$contents];
+            $show_dat["all_detail"]=[$all_data,$contents,$meta_tag];
 
     return view("anime-details",  $show_dat);
     }

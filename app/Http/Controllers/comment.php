@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\userPanel;
+use App\Models\AnimeSettings;
 use Illuminate\Http\Request;
 use App\Models\comments;
+use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
-
+use Illuminate\Support\Facades\Session;
 class comment extends Controller
 {
     /**
@@ -17,6 +20,20 @@ class comment extends Controller
     public function index()
     {
         //
+        $comment["comments"]=comments::select("comments.id as comment_id","comments.comments")
+        // ->join("comments", "anime_setting.id", "=", "comments.anime_id")
+        // ->rightJoin("user_panels", "comments.user_id", "=", "user_panels.email")
+        ->where("comments.anime_id", Session::get("user_email"))
+        ->get() ;
+
+        $comment = AnimeSettings::select("anime_setting.id as anime_Id","anime_setting.anime_category as anime_cat","anime_setting.flid","anime_setting.title as anime_title","anime_setting.anime_image","anime_setting.season","anime_setting.total_season","anime_setting.anime_description","anime_setting.episodes_status","anime_setting.anime_status","comments.*")
+        ->join("comments", "anime_setting.id", "=", "comments.anime_id")
+        ->where("comments.user_id", Session::get("user_email"))
+        // ->get(array("anime_setting.*", "comments.*"));
+        ->paginate(17);
+
+return view("Your-comment",compact("comment"));
+
     }
 
     /**
@@ -91,6 +108,7 @@ $check_file=comments::find($request->comment_id);
 $file_desc_check="/". $check_file->comments;
 //  $file_image_check="/". $description[0]["anime_description"];
 $isExists = Storage::exists($file_desc_check);
+
 if ($isExists) {
 
     Storage::disk('local')->delete($check_file->comments);

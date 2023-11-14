@@ -91,6 +91,12 @@ border-radius: 25px;
     font-weight: bolder;
 }
 
+.hidden-menu{
+    width: 100% !important
+}
+.login__form form .input__item{
+    width: 100% !important
+}
 
             </style>
             <div class="row px-md-3 d-flex flex-wrap justify-content-center">
@@ -129,8 +135,8 @@ border-radius: 25px;
 
 {{-- {{pre($user_setting)}} --}}
             <div class="login__form">
-            <div class="col-md-12 d-flex flex-wrap justify-content-center">
-                <form method="POST" class="hidden-menu" action="{{ url('/update-user') }}"
+            <div class="col-md-12 d-flex flex-wrap ">
+                <form method="POST" class="hidden-menu "  action="{{ url('/update-user') }}"
                     enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="id" value="{{$user_setting[0]->id}}">
@@ -199,7 +205,7 @@ padding: 11px;
                         <img id="imagePreview"  src="{{Storage::url('public/profile')}}/{{$user_setting[0]->profile}}" style="border-radius:25px;width: 150px; height: 150px;">
                     </a>
                     </div><br>
-                    <button type="submit" class="site-btn">Register Now</button>
+                    <button type="submit" class="site-btn">SAVE</button>
 
                 </form>
 

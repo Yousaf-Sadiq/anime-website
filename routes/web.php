@@ -76,6 +76,7 @@ Route::post('login-user',[userHandling::class,"check_login"]);
 Route::get('logout',[userHandling::class,"logout"]);
 Route::get('user-inactive/{id}',[userHandling::class,"inActive"]);
 
+Route::get('User-comment',[comment::class,"index"]);
 });
 // user middleware end
 // ===================================
