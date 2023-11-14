@@ -82,12 +82,15 @@ Route::get('User-comment',[comment::class,"index"]);
 // ===================================
 // ===================================
 // ===================================
+Route::get('/admin', [AdminLogins::class,"index"])->name("admin");
 
+Route::post('/login-admin', [AdminLogins::class,"check_admin_login"]);
 
 // admin views routes
-Route::get('/admin', [AdminLogins::class,"index"]);
+Route::middleware(['ADMIN_AUTH'])->group(function () {
+
 Route::get('/admin-setting', [AdminLogins::class,"admin_setting"]);
-Route::get('/dashboard', [AdminLogins::class,"dashboard"]);
+Route::get('/dashboard', [AdminLogins::class,"dashboard"])->name("dashboard");
 Route::get('/admin_logout', [AdminLogins::class,"logout"]);
 Route::get('/All-user', [userHandling::class,"admin_handler"]);
 Route::get('/Edit-admin-user/{id}', [userHandling::class,"Edit_admin_user"]);
@@ -99,9 +102,8 @@ Route::post('/meta-tag-insert', [meta_tag::class,"store"]);
 Route::post('/meta-tag-edit', [meta_tag::class,"update"]);
 Route::get('/meta-description/{id}', [meta_tag::class,"meta_description"]);
 
-Route::post('/login-admin', [AdminLogins::class,"check_admin_login"]);
-
 Route::post('/update-admin', [AdminLogins::class,"edit"]);
+
 
 // ===================================
 // ===================================
@@ -164,3 +166,4 @@ Route::get('category/{name}/{order_by}', [categoryHandling::class,"index"]);
 // ====================================================
 // ====================================================
 
+});

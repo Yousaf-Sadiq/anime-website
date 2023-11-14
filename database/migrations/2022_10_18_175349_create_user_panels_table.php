@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string("profile");
             $table->string("user_name");
             $table->string("email");
-            $table->string("passwrod");
+            $table->string("password");
             $table->timestamps();
         });
     }

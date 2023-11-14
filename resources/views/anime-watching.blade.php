@@ -928,8 +928,7 @@ $count_season++;
             <form action="{{ url('/anime-comments') }}" method="POST">
                 @csrf
                 <?php
-                        {{--  session()->flush();  --}}
-                        $actual_link2 = "$_SERVER[REQUEST_URI]";
+                        $actual_link2 = $_SERVER["REQUEST_URI"];
                         ?>
                 <input type="hidden" name="anime_id" value=" {{ $anime_flids[0][0]['anime_id'] }}">
                 <input type="hidden" name="user_id" value="{{ Session::get('user_email') }}">

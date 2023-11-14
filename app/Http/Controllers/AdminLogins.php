@@ -70,6 +70,7 @@ class AdminLogins extends Controller
                     $session_name = "admin_email";
                     $session_value = $req->email_login;
                     $req->session()->put($session_name, $session_value);
+
                     return redirect('/dashboard')->with('login_success', 'Thanks to joining our community and keep Support us');
                 } else {
                     return redirect('/admin')->with('login_error', 'password Not match');
