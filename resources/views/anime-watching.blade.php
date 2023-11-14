@@ -335,6 +335,9 @@ $Api_key = '5278isk33v7l8ux3kts2';
                             }
 
                         }
+                        .active {
+                            background-color: #E53637 !important;
+                        }
                     </style>
                     <?php
         $count=1;
@@ -350,21 +353,21 @@ $Api_key = '5278isk33v7l8ux3kts2';
 
                         // array_push($myArr,$new_video_url);
                         ?>
+
                     @if ((Session::get("episode2")-1) >= $b )
 
 
-                    <a class="episode" style="cursor: pointer; background-color:white; color:black;" data-id={{ $count
+                    <a class="@if(($_GET["Ep"]) == $count ) active @else @endif episode"  data-id={{ $count
                         }}>
-                        @if ($count <= 10) LECTURE-0{{ $count }} @else LECTURE-{{ $count }} @endif </a>
-                            @else
+                        @if ($count <= 10) {{$full_data["result"]["files"][$b]["title"]}} LECTURE-0{{ $count }} @else {{$full_data["result"]["files"][$b]["title"]}}  LECTURE-{{ $count }} @endif
+                     </a>
 
-                            <a class="episode" style="cursor: pointer;" data-id={{ $count }}>
-                                @if ($count <= 10) LECTURE-0{{ $count }} @else LECTURE-{{ $count }} @endif </a>
-
-
+                     @else
+           <a class="episode @if(($_GET["Ep"]) == $count ) active @else @endif  " style="cursor: pointer;"   data-id={{ $count }}>
+                                @if ($count <= 10) {{$full_data["result"]["files"][$b]["title"]}}  LECTURE-0{{ $count }} @else {{$full_data["result"]["files"][$b]["title"]}}  LECTURE-{{ $count }} @endif
+            </a>
                                     @endif
                                     <?php
-
 $count++;
 }
 
@@ -404,7 +407,7 @@ Session::put("episode2",$_GET["Ep"] );
                         else{
                             $check_episode=0;
                         }
-pre(Session::get($anime_flids[0][0]['anime_title']));
+// pre(Session::get($anime_flids[0][0]['anime_title']));
 
                        // Session::put(["episode",($_GET["Ep"]-1)]);
 
@@ -412,7 +415,7 @@ pre(Session::get($anime_flids[0][0]['anime_title']));
 // $full_data=array_sorts($full_data, )
 
                         $save_url_episode["link"]=[];
-
+// pre($full_data["result"]["files"]);
                         $file_uploaded["uploaded"]=[];
                         for ($b=0; $b <=$length_full_data_file ; $b++) {
 
@@ -434,7 +437,7 @@ pre(Session::get($anime_flids[0][0]['anime_title']));
 
                         // ===============================
 
-function array_sorts($array, $on, $order=SORT_ASC)
+function array_sorts($array, $on, $order=SORT_DESC)
 {
     $new_array = array();
     $sortable_array = array();
